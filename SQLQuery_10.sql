@@ -17,7 +17,7 @@ INSERT INTO Product VALUES (1, 'Pen'), (2, 'Notebook'), (3, 'Eraser')
 DECLARE @ProductID INT, @ProductName NVARCHAR(50)
 
 -- Declare dynamic cursor
-DECLARE product_cursor DYNAMIC CURSOR FOR
+DECLARE product_cursor  CURSOR DYNAMIC FOR
 SELECT ProductID, ProductName FROM Product
 
 -- Open the cursor
@@ -41,7 +41,7 @@ GO
 DECLARE @ProductID INT, @ProductName NVARCHAR(50)
 
 -- Declare dynamic cursor
-DECLARE product_cursor DYNAMIC CURSOR FOR
+DECLARE product_cursor  CURSOR DYNAMIC FOR
 SELECT ProductID, ProductName FROM Product
 
 -- Open the cursor
@@ -53,7 +53,7 @@ WHILE @@FETCH_STATUS = 0
 BEGIN
     PRINT 'ProductID: ' + CAST(@ProductID AS VARCHAR) + ', Name: ' + @ProductName
 
-    -- Delay of 2 seconds (2000 milliseconds)
+    --Delay of 2 seconds (2000 milliseconds)
     -- WAITFOR DELAY '00:00:02'
 
     FETCH NEXT FROM product_cursor INTO @ProductID, @ProductName
